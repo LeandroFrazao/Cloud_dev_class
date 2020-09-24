@@ -2,8 +2,8 @@ const express = require ('express');
 const bodyParser = require('body-parser');
 
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = '0.0.0.0';
+const port = process.env.PORT || 3000;
 
 const booksController = require('./controller/books')();
 const authorsController =  require('./controller/authors')();
