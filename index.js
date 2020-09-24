@@ -27,10 +27,19 @@ app.use((req, res, next) =>{
 });
 
 app.use(bodyParser.json());
+//get all books
 app.get('/books', booksController.getController);
+//add a book
 app.post('/books', booksController.postController);
+// a book
+app.get('/books/:id', booksController.getById);
+
+//get all authors
 app.get('/authors', authorsController.getController);
+//add an author
 app.post('/authors', authorsController.postController);
+// an author
+app.get('/authors/:id', authorsController.getById);
 
 
 app.listen(port, hostname, ()=>{

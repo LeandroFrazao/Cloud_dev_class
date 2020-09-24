@@ -5,6 +5,9 @@ module.exports= () => {
         //return res.end(JSON.stringify(books.get()));
         res.json(books.get());
     };
+    const getById = (req, res)=>{
+        res.json(books.get(req.params.id));
+    };
 
     const postController= (req, res)=>{
         
@@ -18,6 +21,7 @@ module.exports= () => {
     return {
         getController,
         postController,
+        getById,
     };
     
 };

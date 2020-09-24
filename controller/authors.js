@@ -6,6 +6,10 @@ module.exports= () => {
         res.json(authors.get());
     };
 
+    const getById = (req, res)=>{
+        res.json(authors.get(req.params.id))
+    }
+
     const postController =( req, res) =>{
         console.log(req.body);
         const name = req.body.name;
@@ -17,6 +21,7 @@ module.exports= () => {
     return {
         getController,
         postController,
+        getById,
     };
     
 

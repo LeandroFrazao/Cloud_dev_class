@@ -4,7 +4,7 @@ module.exports = () => {
 
     const get = ( id = null) => {
         console.log('Inside Books');
-        if (!id || id>db.books.length){
+        if (!id || id>db.books.length || id<=0){
             return db.books;    
         }
         return db.books[parseInt(id) - 1];

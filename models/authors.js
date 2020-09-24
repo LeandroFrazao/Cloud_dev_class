@@ -5,7 +5,7 @@ module.exports = () =>{
     
     const get =(id = null) =>{
         console.log('Inside Authors');
-        if (!id || id> db.authors.length){
+        if (!id || id> db.authors.length || id<=0){
             return db.authors;
         }
         return db.authors[parseInt(id) - 1];
