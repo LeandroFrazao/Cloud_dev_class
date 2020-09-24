@@ -2,10 +2,13 @@ const db = require("../db")();
 
 module.exports = () => {
 
-    
-    const get = () => {
+    const get = ( id = null) => {
         console.log('Inside Books');
-        return db.books;
+        if (!id || id>db.books.length){
+            return db.books;    
+        }
+        return db.books[parseInt(id) - 1];
+        
     }
 
     const add = (name, author) =>{

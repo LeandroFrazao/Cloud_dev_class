@@ -10,16 +10,14 @@ const authorsController =  require('./controller/authors')();
 
 const app = module.exports= express();
 
+//app.use(bodyParser.json());
 app.use('/', express.static('static')); //call the index.html in static folder
 
-
-app.use(bodyParser.json());
 
 app.use((req, res, next) =>{
     console.log('[%s] %s -- %s', new Date(), 'Method: ', req.method, req.url);
     console.log(req.body , "  Body in index");
-    
-    //res.statusCode = 200;
+
     res.setHeader ('Content-Type', 'application/json');
       next();
     //res.header("Access-Control-Allow-Origin", "*");

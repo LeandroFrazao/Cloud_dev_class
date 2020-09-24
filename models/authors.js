@@ -3,9 +3,12 @@ const db = require("../db")();
 module.exports = () =>{
     
     
-    const get =() =>{
+    const get =(id = null) =>{
         console.log('Inside Authors');
-        return db.authors;
+        if (!id || id> db.authors.length){
+            return db.authors;
+        }
+        return db.authors[parseInt(id) - 1];
     }
 
     const add =(name)=>{
