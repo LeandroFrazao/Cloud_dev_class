@@ -1,21 +1,21 @@
 module.exports= () => {
     const authors =  require('../models/authors')();
 
-    const getController =(req,res)=>{
+    const getController = async(req,res)=>{
         //return res.end(JSON.stringify(authors.get()))
-        res.json(authors.get());
+        res.json(await authors.get());
     };
 
     const getById = (req, res)=>{
-        res.json(authors.get(req.params.id))
+        res.json({error:"not implemented yet- authors.get(req.params.id)"})
     }
 
-    const postController =( req, res) =>{
+    const postController = async( req, res) =>{
         console.log(req.body);
         const name = req.body.name;
-        console.log(name + ' Name')
-        authors.add(name);
-        return res.end(`POST: ${name}`)
+        const result = await authors.add(name);
+        
+        res.json(result);
     };
 
     return {
