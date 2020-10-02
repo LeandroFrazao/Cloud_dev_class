@@ -1,7 +1,7 @@
 
-//const uri = process.env.MONGO_URI;
+const uri = process.env.MONGO_URI;
 const MongoClient = require('mongodb').MongoClient;
-const uri = require('../MONGO_key')().MONGO_URI;  //avoid doing this-SECURITY REASONS
+//const uri = require('../MONGO_key')().MONGO_URI;  //avoid doing this-SECURITY REASONS
 const DB_NAME = "CWBA";
 const MONGO_OPTIONS = { useUnifiedTopology: true, useNewUrlParser: true};
 
