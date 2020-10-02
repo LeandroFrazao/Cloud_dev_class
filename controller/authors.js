@@ -11,7 +11,7 @@ module.exports= () => {
     }
 
     const postController = async( req, res) =>{
-        console.log(req.body);
+
         const name = req.body.name;
         const result = await authors.add(name);
         

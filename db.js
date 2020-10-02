@@ -6,7 +6,7 @@ const DB_NAME = "CWBA";
 const MONGO_OPTIONS = { useUnifiedTopology: true, useNewUrlParser: true};
 
 module.exports = () => {
-    console.log(JSON.stringify(uri) + '<<<<<<< URI');    
+    //console.log(JSON.stringify(uri) + '<<<<<<< URI');    
     const count = (collectionName)=>{
         return new Promise((resolve, reject)=>{
             MongoClient.connect(uri, MONGO_OPTIONS,(err, client) =>{ 
@@ -27,14 +27,11 @@ module.exports = () => {
             MongoClient.connect(uri, MONGO_OPTIONS,(err, client) =>{
                 const db = client.db(DB_NAME);
                 const collection = db.collection(collectionName);
-                collection.find({}).toArray((err, docs)=>{
-                    
+                collection.find({}).toArray((err, docs)=>{                    
                     resolve(docs);
                     client.close();
                 })
             })
-            
-            
         });
     };    
     
@@ -51,8 +48,7 @@ module.exports = () => {
             }) 
         });
     };
-    
-    
+        
     const authors =[
         {id:1, name: 'Willian Gibson'},
         {id:2, name: 'Neil Stephenson'}
