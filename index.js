@@ -14,14 +14,12 @@ const app = module.exports= express();
 //app.use(bodyParser.json());
 app.use('/', express.static('static')); //call the index.html in static folder
 
-
+//login
 app.use((req, res, next) =>{
     console.log('[%s] %s -- %s', new Date(), 'Method: ', req.method, req.url);
-    console.log(req.body , "  Body in index");
 
     res.setHeader ('Content-Type', 'application/json');
-      next();
-    
+      next();    
 });
 
 app.use(bodyParser.json());
@@ -42,7 +40,7 @@ app.get('/authors/:id', authorsController.getById);
 
 app.listen(port, hostname, ()=>{
     console.log(`Server running at http://${hostname}:${port}/`);
-    console.log(process.env.MONGO_URI)
+    //console.log(process.env.MONGO_URI)
 });
 
 // 404

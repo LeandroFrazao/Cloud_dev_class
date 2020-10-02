@@ -5,15 +5,14 @@ const MongoClient = require('mongodb').MongoClient;
 const DB_NAME = "CWBA";
 const MONGO_OPTIONS = { useUnifiedTopology: true, useNewUrlParser: true};
 
-module.exports = () => {
-    //console.log(JSON.stringify(uri) + '<<<<<<< URI');    
+module.exports = () => {   
     const count = (collectionName)=>{
         return new Promise((resolve, reject)=>{
             MongoClient.connect(uri, MONGO_OPTIONS,(err, client) =>{ 
                 const db = client.db(DB_NAME);
                 const collection = db.collection(collectionName);
                 
-                collection.count({}, (err, docs)=>{
+                collection.countDocuments({}, (err, docs)=>{
                     resolve(docs);
                     client.close();
                 })
@@ -23,7 +22,6 @@ module.exports = () => {
     
     const get = (collectionName)=>{
         return new Promise((resolve, reject)=>{
-            
             MongoClient.connect(uri, MONGO_OPTIONS,(err, client) =>{
                 const db = client.db(DB_NAME);
                 const collection = db.collection(collectionName);

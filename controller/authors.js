@@ -11,10 +11,8 @@ module.exports= () => {
     }
 
     const postController = async( req, res) =>{
-
         const name = req.body.name;
         const result = await authors.add(name);
-        
         res.json(result);
     };
 
@@ -23,5 +21,4 @@ module.exports= () => {
         postController,
         getById,
     };
-    
 };

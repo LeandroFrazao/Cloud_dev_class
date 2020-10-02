@@ -6,8 +6,7 @@ module.exports = () => {
     const get = async() => {
         console.log('Inside Books model- Mongo');
         const books = await db.get(COLLECTION);
-        return books;
-        
+        return books; 
     }
 
     const add = async (name, author) =>{
