@@ -3,10 +3,14 @@ const COLLECTION = "books";
 
 module.exports = () => {
 
-    const get = async() => {
+    const get = async(id = null) => {
         console.log('Inside Books model- Mongo');
-        const books = await db.get(COLLECTION);
-        return books; 
+        if  (!id){
+            const books = await db.get(COLLECTION);
+            return books;
+        }
+             
+        return {error: "byId not implemented yet"}
     }
 
     const add = async (name, author) =>{

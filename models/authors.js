@@ -3,10 +3,13 @@ const COLLECTION = "authors";
 
 module.exports = () =>{
     
-    const get = async() =>{
+    const get = async(id = null) =>{
         console.log('Inside Authors Model');
-        const authors = await db.get(COLLECTION);
-        return authors;
+        if  (!id){
+            const authors = await db.get(COLLECTION);
+            return authors;
+        }
+        return {error: "byId not implemented yet"}
     }
     
     const add = async (name)=>{
