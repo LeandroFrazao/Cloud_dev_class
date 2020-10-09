@@ -24,8 +24,8 @@ module.exports= () => {
         getController,
         postController,
         getById,
-        aggregateWithAuthors,
-        
+        populatedController,
+
     }; 
 };
 
