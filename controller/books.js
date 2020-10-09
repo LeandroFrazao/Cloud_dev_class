@@ -16,10 +16,16 @@ module.exports= () => {
             res.json(result); 
     };
 
+    const populatedController = async(req, res)=>{
+        res.json(await books.aggregateWithAuthors());
+    };
+
     return {
         getController,
         postController,
         getById,
+        aggregateWithAuthors,
+        
     }; 
 };
 

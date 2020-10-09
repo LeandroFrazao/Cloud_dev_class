@@ -29,6 +29,8 @@ app.get('/books', booksController.getController);
 app.post('/books', booksController.postController);
 // a book
 app.get('/books/:id', booksController.getById);
+// Get all books with authors
+app.get("/books/populated", booksController.populatedController);
 
 //get all authors
 app.get('/authors', authorsController.getController);
@@ -36,7 +38,8 @@ app.get('/authors', authorsController.getController);
 app.post('/authors', authorsController.postController);
 // an author
 app.get('/authors/:id', authorsController.getById);
-
+// Get all authors with books
+app.get("/authors/populated", authorsController.populatedController);
 
 app.listen(port, hostname, ()=>{
     console.log(`Server running at http://${hostname}:${port}/`);
