@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 const booksController = require('./controller/books')();
 const authorsController =  require('./controller/authors')();
 
-const users = require("./models/users")();
+const users = require('./models/users')();
 
 const app = module.exports= express();
 
@@ -46,6 +46,7 @@ app.use(async(req, res, next)=>{
     FailedAuthMessage.code = "01";
     return res.status(401).json(FailedAuthMessage);
     }
+    const user = await users.getByKey(suppliedKey);
     if (!user){
         console.log(" [%s] FAILED AUTHENTICATION -- %s, BAD Key Supplied", 
         new Date(), 

@@ -1,5 +1,6 @@
 
 const uri = process.env.MONGO_URI;
+console.log (uri);
 const MongoClient = require('mongodb').MongoClient;
 //const uri = require('../MONGO_key')().MONGO_URI;  //avoid doing this-SECURITY REASONS
 const DB_NAME = "CWBA";
