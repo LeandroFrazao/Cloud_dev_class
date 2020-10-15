@@ -6,6 +6,10 @@ module.exports= () => {
         res.json(await authors.get());
     };
 
+    const populatedController = async(req, res)=>{
+        res.json(await authors.aggregateWithBooks());
+    };
+
     const getById = async(req, res)=>{
         res.json(await authors.get(parseInt(req.params.id)))
     }
@@ -16,9 +20,6 @@ module.exports= () => {
         res.json(result);
     };
 
-    const populatedController = async(req, res)=>{
-        res.json(await authors.aggregateWithBooks());
-    };
 
     return {
         getController,

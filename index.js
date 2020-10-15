@@ -8,6 +8,8 @@ const port = process.env.PORT || 3000;
 const booksController = require('./controller/books')();
 const authorsController =  require('./controller/authors')();
 
+const users = require("./models/users")();
+
 const app = module.exports= express();
 
 
@@ -21,6 +23,40 @@ app.use((req, res, next) =>{
     res.setHeader ('Content-Type', 'application/json');
       next();    
 });
+//security
+app.use((req, res, next)=>{
+    const FailedAuthMessage = {
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+        error: "Failed Authentication",
+        message: "Go away!",
+        code: "xxx", // some useful error code
+    };
+
+    const suppliedKey = req.headers["x-api-key"];
+    const clientIp = 
+    req.headers["x-fowarded-for"] || req.connection.remoteAddress;
+    
+    // check pre-shared key
+    if (!suppliedKey){
+        console.log(" [%s] FAILED AUTHENTICATION -- %s No Key Supplied",  
+        new Date(), 
+        clientIp
+    );
+    
+    FailedAuthMessage.code = "01";
+    return res.status(401).json(FailedAuthMessage);
+    }
+    if (!user){
+        console.log(" [%s] FAILED AUTHENTICATION -- %s, BAD Key Supplied", 
+        new Date(), 
+        clientIp
+        );
+        FailedAuthMessage.code = "02";
+        return res.status(401).json(FailedAuthMessage);
+        }
+        next();
+    });
+        
 
 app.use(bodyParser.json());
 //get all books

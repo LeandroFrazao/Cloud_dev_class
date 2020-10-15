@@ -1,3 +1,5 @@
+const books = require("../controller/books");
+
 const db = require("../db")();
 const COLLECTION = "books";
 const LOOK_AUTHORS_PIPELINE = [
@@ -27,8 +29,8 @@ module.exports = () => {
             const books = await db.get(COLLECTION);
             return books;
         }
-             
-        return {error: "byId not implemented yet"}
+         const book = await db.get(COLLECTION, {id});    
+        return books;
     }
 
     const add = async (name, author) =>{
