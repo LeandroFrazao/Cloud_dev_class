@@ -2,7 +2,7 @@ const books = require("../controller/books");
 
 const db = require("../db")();
 const COLLECTION = "books";
-const LOOK_AUTHORS_PIPELINE = [
+const LOOKUP_AUTHORS_PIPELINE = [
     {
         $lookup:{
             from:"authors",
